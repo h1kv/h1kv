@@ -1,0 +1,132 @@
+:root {
+  --ink: #0a0a0b;
+  --muted: #6b6b73;
+  --bg: #fdfdfc;
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+/* The site uses Geist (free, self-hosted via next/font) as a near-match to
+   Palantir's commercial title face, Söhne. To use the real Söhne, buy a webfont
+   license, add the .woff2 files under /public/fonts, uncomment the block below,
+   and put "Söhne" first in the body font-family.
+
+   @font-face { font-family: "Söhne"; src: url("/fonts/soehne-buch.woff2")     format("woff2"); font-weight: 400; font-display: swap; }
+   @font-face { font-family: "Söhne"; src: url("/fonts/soehne-kraftig.woff2")  format("woff2"); font-weight: 500; font-display: swap; }
+   @font-face { font-family: "Söhne"; src: url("/fonts/soehne-halbfett.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-geist), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.hero {
+  position: relative;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  padding: 8vw;
+  text-align: center;
+}
+
+/* "Coming soon" status pill — 1px hairline border (Vercel/Stripe style) with a
+   small live dot. */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.phrase {
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  font-size: clamp(2.1rem, 6.4vw, 4.5rem);
+  text-wrap: balance;
+}
+
+.backed {
+  font-size: 0.95rem;
+  color: var(--muted);
+  letter-spacing: -0.005em;
+}
+
+.brand {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Staggered fade-up on load + a gentle pulse on the live dot. Settles fully and
+   respects reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .eyebrow {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .phrase {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  }
+  .backed {
+    animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both;
+  }
+  .dot {
+    animation: pulse 2.4s ease-out infinite;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(10, 10, 11, 0.3);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(10, 10, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(10, 10, 11, 0);
+  }
+}
