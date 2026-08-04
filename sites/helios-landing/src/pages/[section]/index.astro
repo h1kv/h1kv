@@ -44,6 +44,11 @@ const items = entries
       <>
         <h1>{section.title}</h1>
 
+        {section.intro && <p class="section-intro">{section.intro}</p>}
+        {section.notes?.map((n) => (
+          <p class="section-note"><strong>{n}</strong></p>
+        ))}
+
         {section.type === 'writing' ? (
           <ul class="entry-list">
             {items.map((e) => (

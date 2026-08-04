@@ -54,4 +54,5 @@ export const collections = {
   advice: page('advice'),
   people: page('people'),
   projects: page('projects'),
+  blog: writing('blog'),
 };

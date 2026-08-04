@@ -90,6 +90,19 @@ time,
   color: #777777;
 }
 
+.section-intro {
+  color: #555555;
+  margin: 0 0 0.9rem;
+}
+
+.section-note {
+  color: #555555;
+  margin: 0.2rem 0;
+}
+.section-note:last-of-type {
+  margin-bottom: 1.5rem;
+}
+
 /* ── writing (essay) list ───────────────────────────────────── */
 .entry-list {
   list-style: none;
