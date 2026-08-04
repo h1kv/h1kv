@@ -1,0 +1,19 @@
+---
+// Static 404. On any unknown URL the host serves this page (dist/404.html),
+// which immediately redirects the visitor back to the homepage.
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content="0; url=/" />
+    <title>Redirecting…</title>
+    <script is:inline>
+      window.location.replace('/');
+    </script>
+  </head>
+  <body>
+    <p>Page not found. <a href="/">Go to the homepage</a>.</p>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+---
+import { site } from '../config/site';
+---
+<nav class="site-nav">
+  <a href="/" class="site-name">{site.name}</a>
+  {site.sections.map((s) => <a href={`/${s.slug}/`}>{s.title}</a>)}
+</nav>

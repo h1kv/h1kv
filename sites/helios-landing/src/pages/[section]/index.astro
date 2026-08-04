@@ -1,0 +1,76 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../config/site';
+import { formatDate } from '../../lib/format';
+import { getCollection, render } from 'astro:content';
+import type { CollectionKey } from 'astro:content';
+
+// One index page per section, driven entirely by src/config/site.ts.
+export async function getStaticPaths() {
+  return site.sections.map((section) => ({
+    params: { section: section.slug },
+    props: { section },
+  }));
+}
+
+const { section } = Astro.props;
+
+const entries = (await getCollection(section.slug as CollectionKey)) as any[];
+
+// A 'page' section is a single standalone doc — render its Markdown body.
+let PageContent: any = null;
+if (section.type === 'page') {
+  const doc = entries[0];
+  if (doc) PageContent = (await render(doc)).Content;
+}
+
+// 'writing' / 'list' sections: newest first, drafts hidden.
+const items = entries
+  .filter((e) => !e.data.draft)
+  .sort((a, b) => {
+    const da = a.data.date ? +new Date(a.data.date) : 0;
+    const db = b.data.date ? +new Date(b.data.date) : 0;
+    return db - da;
+  });
+---
+<Base title={section.title}>
+  {
+    section.type === 'page' ? (
+      <article class="prose">
+        <h1>{section.title}</h1>
+        {PageContent ? <PageContent /> : <p class="item-note">Nothing here yet.</p>}
+      </article>
+    ) : (
+      <>
+        <h1>{section.title}</h1>
+
+        {section.type === 'writing' ? (
+          <ul class="entry-list">
+            {items.map((e) => (
+              <li>
+                <a href={`/${section.slug}/${e.id}`}>{e.data.title}</a>
+                {e.data.date && <time>{formatDate(e.data.date)}</time>}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ul class="list-items">
+            {items.map((e) => (
+              <li>
+                <div>
+                  <span class="item-title">
+                    {e.data.url ? <a href={e.data.url}>{e.data.title}</a> : e.data.title}
+                  </span>
+                  {e.data.meta && <span class="item-meta"> — {e.data.meta}</span>}
+                </div>
+                {e.data.note && <div class="item-note">{e.data.note}</div>}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {items.length === 0 && <p class="item-note">Nothing here yet.</p>}
+      </>
+    )
+  }
+</Base>
