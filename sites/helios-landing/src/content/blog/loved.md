@@ -1,0 +1,6 @@
+---
+title: "loved [unredacted]"
+date: "2025-05-16T00:00:00Z"
+---
+
+it hurts gng lowkey and i dont even think i realize how hard it does on myself bro, that feeling of knowing someone genuinely loves you for you and they hold the maturity to communicate, be honest, help you improve on your struggles, and accept and hear you bro. my prospective on love is so widely changed and i am thankful i do not count myself as a "gen z lover" or whatever it is called because how you can call a woman a bitch? not show respect? and love just based on your lust regardless of emotion which is wild 2 me. i purposefully think the best thing in a female is honesty because without that factor you cannot know they will be loyal, love you for you, not do some sneaky shi, and what not but then i also realise that these high standards also come with the issue that 99% of our generation really dont work this way and its so tragic and i also realise these standards are a reflection on how i am myself so personally i think their is alot of self-improvement to be made on my side such as going gym, fixing my ias streak (i broke ts morning bro), eating healthy, being confident etc but imagine being with a female who is honest and genuinely willing to accept you and be there for you, and watch you step-by-step slowly improve yourself as a person, just imagine that, bro.

@@ -24,6 +24,10 @@ export type Section = {
   title: string;
   slug: string;
   type: SectionType;
+  /** Optional line shown under the heading on a 'writing'/'list' index page. */
+  intro?: string;
+  /** Optional bold notes, each shown on its own line under the intro. */
+  notes?: string[];
 };
 
 export type SiteConfig = {
@@ -45,5 +49,16 @@ export const site: SiteConfig = {
     { title: 'Advice', slug: 'advice', type: 'page' },
     { title: 'People', slug: 'people', type: 'page' },
     { title: 'Projects', slug: 'projects', type: 'page' },
+    {
+      title: 'Blog',
+      slug: 'blog',
+      type: 'writing',
+      intro:
+        "When I find the urge to post something I'll probably post it here. I do imagine that I'll cringe at some posts as time goes on. There are some private ones that I'm debating with myself: “Do I make these public?”",
+      notes: [
+        'FYI: some of the times are fucked. Blame that on my terrible system design back then.',
+        'FYI 2: any post with [unredacted] used to be private.',
+      ],
+    },
   ],
 };

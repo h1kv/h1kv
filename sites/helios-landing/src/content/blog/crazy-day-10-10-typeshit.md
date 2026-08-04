@@ -1,0 +1,6 @@
+---
+title: "crazy day (10/10 typeshit)"
+date: "2025-05-15T00:00:00Z"
+---
+
+writing this at 5:55pm 16-05-2025 (ik 1 day late) while i wait for images to post-process onto my 200gb drive on google, but lets talk what i did today because ill be so fr i had such a good time, so first of all it was sports day so their was really no class at all and the weather was good, but for that whole day i got to use my camera in a realtime situation and use it to capture photos of the event (up to 2.4k) were taken during that which is crazy for me to believe but yeah anyway so what is next? what did i do after that? i left school, chilled with daniel in the libary for 2 hours well actually before that i went to varierty world to say hi but also to buy a charger, then i went to the libary, then i went to the gym to hit a full body session and also guess what i did afterwards? 20 minutes of pure cardio. 20 minute, 15 incline, 4.0 speed no breaks. 200kcl estimate too which is some crazy shit but anwyay its even crazier because it was mainly fasted becuae i had only ate 1 crepe during that, then when i got home my mom made the niciest dinner and i hopped on call w beau and amin for a hour or so, and shit was PEAK. and i didnt even have school tmr, so yeah. crazy day gng. RAHHH

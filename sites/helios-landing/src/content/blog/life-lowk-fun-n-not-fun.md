@@ -1,0 +1,6 @@
+---
+title: "life lowk fun n not fun 😭 [unredacted]"
+date: "2025-05-18T00:00:00Z"
+---
+
+hey its currently 4:45am 19/05/2025 because me and beau had the idea of saying a wallah to stay up till we completed the game which is kind of crazy to me, but we managed to beat it in 4hr and 37min which is not far from our pr in easy on chained together, we recorded it but my dumbass cancelled finalise process so the 4hr mp4 with facecam reactions is gone, but i am lucky to have nvida recording of it at least but oh well their is really not much i can do with it but i have learnt my mistake that i should switch over to mkv file formar instead of the unreliable mp4, i also forgot to mention that i have added a page system on blog system so that 5 days per page to prevent fail posts and github api ratelimitijg so its fine on that front, what else oh yeah earliar in day i made a detection system that detects motion and words (all vibecoded 😭). i also got that bike from john from summer and i am going to clean it, and another thing is my ias streak keeps being broken but im actually trying so hard bro its hard man, and lastly on what i want to talk about is im 98% sure **[redacted]** is edating w a boy from val so maybe i have a chance idk if ima b honest butvwe will see gng, listen ima prib doomscroll for bit then gts, goodnight. love helios:) <3
