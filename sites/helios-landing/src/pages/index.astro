@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../config/site';
+import { formatDate } from '../lib/format';
+import { getCollection } from 'astro:content';
+import type { CollectionKey } from 'astro:content';
+
+// Pull the most recent posts from every "writing" section for the homepage.
+const writingSections = site.sections.filter((s) => s.type === 'writing');
+
+let recent: Array<{ id: string; slug: string; title: string; date: Date }> = [];
+for (const s of writingSections) {
+  const entries = await getCollection(s.slug as CollectionKey);
+  for (const e of entries as any[]) {
+    if (e.data.draft) continue;
+    recent.push({ id: e.id, slug: s.slug, title: e.data.title, date: e.data.date });
+  }
+}
+recent.sort((a, b) => +new Date(b.date) - +new Date(a.date));
+recent = recent.slice(0, 5);
+---
+<Base description={site.bio}>
+  {site.avatar && <img class="avatar" src={site.avatar} alt={site.name} />}
+
+  <p class="bio">{site.bio}</p>
+
+  <p>
+    I don't believe in filling my own personal corner of the internet with
+    jargon or corporate keyword slop. This is my personal site and where
+    everything about me lives.
+  </p>
+
+  {site.email && (
+    <p>Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+  )}
+
+  {
+    recent.length > 0 && (
+      <>
+        <p>Recent writing:</p>
+        <ul class="entry-list">
+          {recent.map((e) => (
+            <li>
+              <a href={`/${e.slug}/${e.id}`}>{e.title}</a>
+              <time>{formatDate(e.date)}</time>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+</Base>

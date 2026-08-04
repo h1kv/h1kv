@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site } from '../../config/site';
+import { formatDate } from '../../lib/format';
+import { getCollection, render } from 'astro:content';
+import type { CollectionKey } from 'astro:content';
+
+// A page per entry, but only for "writing" sections. "list" sections
+// (bookshelf, questions, …) render entirely on their index page.
+export async function getStaticPaths() {
+  const writingSections = site.sections.filter((s) => s.type === 'writing');
+  const paths = [];
+  for (const section of writingSections) {
+    const entries = (await getCollection(section.slug as CollectionKey)) as any[];
+    for (const entry of entries) {
+      paths.push({
+        params: { section: section.slug, slug: entry.id },
+        props: { entry, section },
+      });
+    }
+  }
+  return paths;
+}
+
+const { entry, section } = Astro.props as { entry: any; section: any };
+const { Content } = await render(entry);
+---
+<Base title={entry.data.title} description={entry.data.description}>
+  <article class="prose">
+    <h1>{entry.data.title}</h1>
+    {entry.data.date && <span class="post-date">{formatDate(entry.data.date)}</span>}
+    <Content />
+  </article>
+  <a class="back" href={`/${section.slug}/`}>← {section.title}</a>
+</Base>

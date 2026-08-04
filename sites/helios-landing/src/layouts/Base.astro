@@ -1,0 +1,33 @@
+---
+import Nav from '../components/Nav.astro';
+import { site } from '../config/site';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+// Tab/meta title is just the page name (e.g. "About"); the homepage
+// (no title) falls back to your name.
+const pageTitle = title ?? site.name;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    {description && <meta name="description" content={description} />}
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="wrap">
+      <Nav />
+      <div class="content">
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>

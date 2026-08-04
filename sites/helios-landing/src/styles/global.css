@@ -1,0 +1,194 @@
+/* ─────────────────────────────────────────────────────────────
+   Minimal personal site — plain white, small sans-serif,
+   right-aligned nav, narrow left content column.
+   ───────────────────────────────────────────────────────────── */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a {
+  color: #1a4fb8;
+  text-decoration: underline;
+}
+a:hover {
+  color: #0d2f7a;
+}
+
+/* ── page frame ─────────────────────────────────────────────── */
+.wrap {
+  padding: 1.75rem 2.5rem 5rem;
+}
+.wrap::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ── nav: floated top-right, right-aligned, one link per line ── */
+.site-nav {
+  float: right;
+  text-align: right;
+  margin: 0 0 1.5rem 2.5rem;
+}
+.site-nav a {
+  display: block;
+  padding: 1px 0;
+}
+.site-name {
+  color: #111111;
+  text-decoration: none;
+}
+.site-name:hover {
+  color: #111111;
+}
+
+/* ── left content column ────────────────────────────────────── */
+.content {
+  max-width: 37rem;
+}
+
+.avatar {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+.bio {
+  margin: 0 0 1rem;
+}
+
+/* ── headings ───────────────────────────────────────────────── */
+h1 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 1.75rem 0 0.5rem;
+}
+
+time,
+.post-date {
+  color: #777777;
+}
+
+/* ── writing (essay) list ───────────────────────────────────── */
+.entry-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+}
+.entry-list li {
+  padding: 2px 0;
+}
+.entry-list time {
+  margin-left: 0.5rem;
+  font-size: 0.9em;
+}
+
+/* ── generic list (bookshelf, questions, links…) ────────────── */
+.list-items {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+}
+.list-items li {
+  padding: 0.35rem 0;
+}
+.item-meta {
+  color: #777777;
+}
+.item-note {
+  color: #555555;
+  margin-top: 0.1rem;
+}
+
+/* ── article body ───────────────────────────────────────────── */
+.prose .post-date {
+  display: block;
+  margin: -0.5rem 0 1.5rem;
+}
+.prose p {
+  margin: 1.05rem 0;
+}
+.prose h1,
+.prose h2,
+.prose h3 {
+  margin-top: 2.25rem;
+  margin-bottom: 0.7rem;
+}
+.prose > :first-child {
+  margin-top: 0;
+}
+.prose ul {
+  margin: 1.1rem 0;
+  padding-left: 1.4rem;
+}
+.prose li {
+  margin: 0.55rem 0;
+}
+.prose img {
+  max-width: 100%;
+  height: auto;
+}
+.prose blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #e5e5e5;
+  color: #555555;
+}
+.prose code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: #f4f4f4;
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+.prose pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: #f4f4f4;
+  border-radius: 4px;
+}
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.back {
+  display: inline-block;
+  margin-top: 2.5rem;
+}
+
+/* ── small screens: nav stacks above content ────────────────── */
+@media (max-width: 40rem) {
+  .wrap {
+    padding: 1.25rem 1.25rem 4rem;
+  }
+  .site-nav {
+    float: none;
+    text-align: left;
+    margin: 0 0 1.75rem;
+  }
+  .content {
+    max-width: 100%;
+  }
+}
