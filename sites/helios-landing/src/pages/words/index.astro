@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import quotes from '../../data/quotes.json';
+
+// Only the count is sent to the client, never the quotes themselves.
+const count = quotes.length;
+---
+<Base title="Words from the world">
+  <article class="prose">
+    <h1>Words from the world</h1>
+    <p>
+      These are snippets, quotes, and just some messages from people I have
+      interacted with since 2021. I don't have the heart to actually remove these
+      from existence, as they were all said by someone with a real life, memories,
+      and everything. Although they may've forgotten that they said something, I
+      have always wanted to preserve the littlest of things because it's what makes
+      us human. Although some of these stem from the digital world, or even from
+      real life, the connection and curiosity are what make this fascinating to me.
+    </p>
+
+    <p>Below is a list of where these messages originate from:</p>
+    <ul>
+      <li><strong>h1k-collection-project (present as of: 15/04/2026)</strong></li>
+      <li><strong>Rustsussy Preservation Dump (01/01/2026)</strong></li>
+      <li><strong>The Global Message Board Project (19/07/2025)</strong></li>
+      <li><strong>The Phase Six Contribution Section [SEC-11] (06/11/2024)</strong></li>
+      <li><strong>Quotes4u Project (05/12/2023)</strong></li>
+      <li><strong>Rate My Avatar Animated Board (29/09/2021)</strong></li>
+    </ul>
+
+    <blockquote id="quote">Nothing yet.</blockquote>
+
+    <p><a href="/api/quotes/0.json" id="roll" data-count={count}>[ give me one ]</a></p>
+
+    <pre class="invite"><code>{`The ("h1k-collection-project") will be open for a long time.
+Do you want to leave a trace of yourself and anything you want here?
+You know where to find me.`}</code></pre>
+  </article>
+
+  <script>
+    const el = document.getElementById('quote');
+    const link = document.getElementById('roll');
+    const count = Number(link?.dataset.count ?? 0);
+    let last = -1;
+
+    async function roll(e: Event) {
+      e.preventDefault();
+      if (count < 1) return;
+      let i = Math.floor(Math.random() * count);
+      if (count > 1 && i === last) i = (i + 1) % count; // no repeats in a row
+      last = i;
+      const res = await fetch(`/api/quotes/${i}.json`);
+      const data = await res.json();
+      if (el) el.textContent = data.quote;
+    }
+
+    link?.addEventListener('click', roll);
+  </script>
+</Base>

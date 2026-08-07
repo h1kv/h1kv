@@ -10,6 +10,8 @@
 //        type   — 'writing'  → long-form posts, each Markdown file is its own page
 //                 'list'     → short entries shown together on one page
 //                 'page'     → a single standalone page (e.g. About)
+//                 'custom'   → a hand-built route under src/pages/<slug>/ (the
+//                              dynamic section route skips these; you write the page)
 //
 //  To add a section you touch exactly 3 things:
 //    1. add a line here,
@@ -18,7 +20,7 @@
 //  No template code changes needed. See README.md.
 // ─────────────────────────────────────────────────────────────────────────────
 
-export type SectionType = 'writing' | 'list' | 'page';
+export type SectionType = 'writing' | 'list' | 'page' | 'custom';
 
 export type Section = {
   title: string;
@@ -60,5 +62,6 @@ export const site: SiteConfig = {
         'FYI 2: any post with [unredacted] used to be private.',
       ],
     },
+    { title: 'Words from the world', slug: 'words', type: 'custom' },
   ],
 };
