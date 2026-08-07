@@ -7,10 +7,13 @@ import type { CollectionKey } from 'astro:content';
 
 // One index page per section, driven entirely by src/config/site.ts.
 export async function getStaticPaths() {
-  return site.sections.map((section) => ({
-    params: { section: section.slug },
-    props: { section },
-  }));
+  // 'custom' sections have their own hand-built page under src/pages/<slug>/.
+  return site.sections
+    .filter((section) => section.type !== 'custom')
+    .map((section) => ({
+      params: { section: section.slug },
+      props: { section },
+    }));
 }
 
 const { section } = Astro.props;
