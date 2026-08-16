@@ -6,17 +6,12 @@ import { getCollection, render } from 'astro:content';
 import type { CollectionKey } from 'astro:content';
 
 // One index page per section, driven entirely by src/config/site.ts.
-export async function getStaticPaths() {
-  // 'custom' sections have their own hand-built page under src/pages/<slug>/.
-  return site.sections
-    .filter((section) => section.type !== 'custom')
-    .map((section) => ({
-      params: { section: section.slug },
-      props: { section },
-    }));
-}
-
-const { section } = Astro.props;
+// Server-rendered: resolve the section from the URL param. 'custom' sections
+// have their own hand-built page under src/pages/<slug>/, so they 404 here.
+const section = site.sections.find(
+  (s) => s.slug === Astro.params.section && s.type !== 'custom'
+);
+if (!section) return new Response(null, { status: 404 });
 
 const entries = (await getCollection(section.slug as CollectionKey)) as any[];
 
