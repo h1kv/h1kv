@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro';
 import Nav from '../components/Nav.astro';
 import { site } from '../config/site';
 import '../styles/global.css';
@@ -19,6 +20,7 @@ const pageTitle = title ?? site.name;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <Analytics />
     {description && <meta name="description" content={description} />}
     <title>{pageTitle}</title>
   </head>
