@@ -7,7 +7,20 @@ import { defineMiddleware } from 'astro:middleware';
 // Privacy note: this records visitor IP + coarse geo. IPs are personal data
 // under GDPR. Retention is whatever Vercel's log retention is for your plan;
 // nothing is stored by us beyond the log line.
+const AUTOMATED_CLIENT = /bot\b|crawl|spider|slurp|fetch|scanner|facebookexternalhit|meta-externalagent|facebookcatalog|whatsapp|telegram|bytespider|chatgpt-user|anthropic-ai|google-extended/i;
+
 export const onRequest = defineMiddleware(async (context, next) => {
+  const userAgent = context.request.headers.get('user-agent') || '';
+  if (AUTOMATED_CLIENT.test(userAgent)) {
+    return new Response('Automated clients are not allowed.', {
+      status: 403,
+      headers: {
+        'content-type': 'text/plain; charset=utf-8',
+        'x-robots-tag': 'noindex, nofollow, noarchive',
+      },
+    });
+  }
+
   const url = new URL(context.request.url);
   const path = url.pathname;
 
