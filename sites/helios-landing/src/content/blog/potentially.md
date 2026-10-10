@@ -3,7 +3,7 @@
   date: "2026-10-10T22:15:34Z"
 ---
 
-I couldn't help but notice that starting something fresh again feels really good. Like really really good. Whatever it could be and whether it is restarting from scratch (*which mainly is the case*) the feeling feels so fresh and feels as if some sort of pressure (*although even if there isn't*)  
+I couldn't help but notice that starting something fresh again feels really good. Like really really good. Whatever it could be and whether it is restarting from scratch (*which mainly is the case*) the feeling feels so fresh and feels as if some sort of pressure has just vanished. (*although even if there isn't*)  
 
 
 This situation has happened to me in friendships. Video games. Side projects. Video edits. Homework?. Organising my room. 
