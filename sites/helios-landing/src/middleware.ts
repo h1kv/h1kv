@@ -9,7 +9,18 @@ import { defineMiddleware } from 'astro:middleware';
 // nothing is stored by us beyond the log line.
 const AUTOMATED_CLIENT = /bot\b|crawl|spider|slurp|fetch|scanner|facebookexternalhit|meta-externalagent|facebookcatalog|whatsapp|telegram|bytespider|chatgpt-user|anthropic-ai|google-extended/i;
 
+// h1k.sh now lives at adam.lol. Page hits on h1k.sh redirect there; API routes
+// (/api, /mirror) and internals (/_astro, /_image, /_vercel, …) keep serving.
+const LEGACY_HOSTS = new Set(['h1k.sh', 'www.h1k.sh']);
+const REDIRECT_TARGET = 'https://adam.lol/?utm_source=redirect-h1k';
+const KEEP_ON_LEGACY = /^\/(api|mirror)(\/|$)|^\/_/;
+
 export const onRequest = defineMiddleware(async (context, next) => {
+  const reqUrl = new URL(context.request.url);
+  if (LEGACY_HOSTS.has(reqUrl.hostname) && !KEEP_ON_LEGACY.test(reqUrl.pathname)) {
+    return Response.redirect(REDIRECT_TARGET, 302);
+  }
+
   const userAgent = context.request.headers.get('user-agent') || '';
   if (AUTOMATED_CLIENT.test(userAgent)) {
     return new Response('Automated clients are not allowed.', {
