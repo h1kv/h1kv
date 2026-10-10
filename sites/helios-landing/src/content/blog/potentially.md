@@ -1,6 +1,6 @@
 ---
   title: "why does a fresh start always feel so fresh"
-  date: "2026-10-10T19:42:34Z"
+  date: "2026-10-10T22:15:34Z"
 ---
 
 I couldn't help but notice that starting something fresh again feels really good. Like really really good. Whatever it could be and whether it is restarting from scratch (*which mainly is the case*) the feeling feels so fresh and feels as if some sort of pressure (*although even if there isn't*)  
