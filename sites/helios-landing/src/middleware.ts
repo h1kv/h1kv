@@ -16,8 +16,19 @@ const REDIRECT_TARGET = 'https://adam.lol/?utm_source=redirect-h1k';
 const KEEP_ON_LEGACY = /^\/(api|mirror)(\/|$)|^\/_/;
 
 export const onRequest = defineMiddleware(async (context, next) => {
+  // On Vercel's serverless runtime request.url doesn't carry the public
+  // hostname, so read it from the forwarded/host headers instead.
   const reqUrl = new URL(context.request.url);
-  if (LEGACY_HOSTS.has(reqUrl.hostname) && !KEEP_ON_LEGACY.test(reqUrl.pathname)) {
+  const host = (
+    context.request.headers.get('x-forwarded-host') ||
+    context.request.headers.get('host') ||
+    reqUrl.host
+  )
+    .split(',')[0]
+    .trim()
+    .toLowerCase()
+    .replace(/:\d+$/, '');
+  if (LEGACY_HOSTS.has(host) && !KEEP_ON_LEGACY.test(reqUrl.pathname)) {
     return Response.redirect(REDIRECT_TARGET, 302);
   }
 
